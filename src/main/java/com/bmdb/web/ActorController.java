@@ -57,7 +57,7 @@ public Actor updateActor(@RequestBody Actor m) {
 
 //delete a movie by id
 @DeleteMapping("/{id}")
-public  Actor deleteActor(@PathVariable int id) {
+public Actor deleteActor(@PathVariable int id) {
 	Optional<Actor> m = actorRepo.findById(id);
 	if(m.isPresent()) {
 		actorRepo.deleteById(id);
