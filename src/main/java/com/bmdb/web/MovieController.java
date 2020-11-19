@@ -1,5 +1,6 @@
 package com.bmdb.web;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bmdb.business.Actor;
 import com.bmdb.business.Movie;
 import com.bmdb.db.MovieRepo;
 
@@ -66,5 +69,14 @@ public  Movie deleteMovie(@PathVariable int id) {
 		System.out.println("Error- movie not found for id " + id);
 	}
 		return m.get();
+	}
+
+@GetMapping("/find-by-ratings")
+public List<Movie> getMovieByRating(@RequestParam String rating) {
+	 
+	return movieRepo.findByRating(rating);
+	
+
+
 	}
 }
